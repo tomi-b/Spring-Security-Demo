@@ -1,0 +1,23 @@
+<!DOCTYPEhtml>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Secured</title>
+</head>
+<body>
+	<img src="../static/user/manager/img/manager.jpg"th:src="@{/user/manager/img/manager.jpg}"/>
+	<h1>This is the Manager page</h1>
+	<div th:fragment="logout" class="logout"
+		sec:authorize="isAuthenticated()">
+		User's Name: <span sec:authentication="name"> </span> <br>Roles:
+		<span sec:authentication="principal.authorities"> </span> <br> <br>
+		<div>
+			<form action="#" th:action="@{/logout}" method="post">
+				<input type="submit" value="Logout" />
+			</form>
+		</div>
+	</div>
+	<p>
+		<a href="/" th:href="@{/}">Back to home page</a>
+	</p>
+</body>
+</html>
